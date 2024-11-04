@@ -1,0 +1,18 @@
+name: Pull Request workflow
+on:
+  workflow_dispatch:
+  pull_request:
+jobs:
+  sample-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+      - name: Node環境セットアップ
+        uses: actions/setup-node@v4
+      - name: パッケージインストール
+        run: npm ci
+      - name: ビルド
+        run: npm run build
+      - name: テスト
+        run: npm run test
